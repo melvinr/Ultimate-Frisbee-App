@@ -228,6 +228,10 @@ socket.io            | 1.4.6   | Node.js realtime framework server
 ## Screenshots
 ![Live page](readme/screenshots/matches_live.png)
 ![Match detail page](readme/screenshots/match_detail_score.png)
+![Tournaments](readme/screenshots/tournaments.png)
+![Tournament matches](readme/screenshots/tournament_matches.png)
+![Matches live responive](readme/screenshots/matches_live_responsive.png)
+![Tournaments responive](readme/screenshots/tournaments_responsive.png)
 
 
 ## Communication and planning tools
