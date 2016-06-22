@@ -247,7 +247,6 @@ socket.io            | 1.4.6   | Node.js realtime framework server
 - [Fons Hettema](https://github.com/strexx)
 - [Melvin Reijnoudt](https://github.com/melvinr)
 - [Senny Kalidien](https://github.com/sennykalidien)
-- 
 
 # Personal tasks per week
 
