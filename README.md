@@ -211,7 +211,7 @@ socket.io            | 1.4.6   | Node.js realtime framework server
 - Overview of games per field
 - Current ranking on live results tab
 
-## Tasks per week
+## Personal tasks per week
 
 ![Trello-board](readme/screenshots/trello.png)
 
@@ -274,7 +274,7 @@ Things I've done to contribute to this project:
 - Update process report.
 - Update drive.
 
-##Used techniques from courses
+##Personal used techniques from courses
 ###CSS To The Rescue
 ####Flexbox
 Used flexbox to create the application's layout. For the browsers that don't support flexbox I provided a fallback using modernizr. You can find the fallback file at ``/public/src/css/flexboxfallback.css``.
