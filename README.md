@@ -215,7 +215,11 @@ socket.io            | 1.4.6   | Node.js realtime framework server
 
 ![Trello-board](readme/screenshots/trello.png)
 
-Things I've done to contribute to this project:
+Things I've done to contribute to this project can be found at https://github.com/strexx/Ultimate-Frisbee-App/commits?author=melvinr
+
+Besides these commits I also contributed to a lot of commits done by Fons and Senny.
+
+Below you can find a summary of the tasks I performed on a weekly basis, as well as a list of course related features I implemented.
 
 ###Week 1
 - Briefing with the client.
