@@ -86,6 +86,7 @@ Below you can find a summary of the tasks I performed on a weekly basis, as well
 
 ##Used techniques from courses
 ###CSS To The Rescue
+------
 ####Flexbox
 Used flexbox to create the application's layout. For the browsers that don't support flexbox I provided a fallback using modernizr. You can find the fallback file at ``/public/src/css/flexboxfallback.css``.
 
@@ -129,6 +130,7 @@ For the matches page, I created a dropdown using CSS transitions and added an an
 I also created and made use of reusable classifications for elements. This made it easy to quickly style multiple elements the same way.
 
 ###Web App From Scratch
+------
 ####IIFE and namespacing
 We made use of IIFE's (Immediately Invoked Function Expression). Only the relevant parts that will be used outside of the scope will be returned.
 We also used namespacing to ensure that if the namespace that we used already exists, the code will be joined. If the current namespace doesn't exist, it will be created.
@@ -197,6 +199,7 @@ Made use of, edited and created get and post requests to the leaguevine API. An 
 I created the functionality for the score buttons. Adding or subtracting from the score on certain button click. This data was sent to the API. Later on in the project we integrated MongoDB in the project, the buttons eventually sent this data to the database instead of the API.
 
 ###Performance Matters
+------
 ####Gulp - Critical CSS
 Made use of and edited gulp when needed. Edited the CriticalCSS gulp task to create critical css.
 
@@ -234,6 +237,7 @@ Made use of the BEM notation for classes and id's. By using the BEM notation you
 ```
 
 ###Real Time Web
+------
 ####Real time aspect
 Made use of socket.io to create the real time aspect of the application. In the end I fixed an important part of the real time aspect with the help of Robert van Steen.
 
@@ -241,6 +245,7 @@ Made use of socket.io to create the real time aspect of the application. In the 
 Manipulated mongodb collections to save and delete data. This way we were able to give the application a significant speed boost, since it was no longer dependent on the speed of the LeagueVine API. The setup of the collections was a collaborative effort, but Fons and Senny setup the biggest part of the database and its collections.
 
 ###Browser Technologies
+------
 ####Progressive enhancement
 Made the application's core functionality available without JavaScript. The user gets a better experience with extra functionalities if JavaScript is turned on or the browser supports it.
 
