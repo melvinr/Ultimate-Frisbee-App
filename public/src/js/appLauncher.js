@@ -14,6 +14,7 @@ UFA.launcher = ( () => {
         document.addEventListener("DOMContentLoaded", function () {
             UFA.router.init();
             UFA.fontFaceObserver.init();
+            UFA.favorites.init();
         });
     }
 
@@ -24,4 +25,6 @@ UFA.launcher = ( () => {
 })();
 
 // Feature detection
-UFA.launcher.init();
+if ((document.querySelectorAll || document.querySelector)) {
+    UFA.launcher.init();
+}

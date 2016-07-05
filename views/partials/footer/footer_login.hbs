@@ -1,5 +1,16 @@
 <footer id="footer">
     <nav class="footer__menu">
+        <button class="arrow__up__container">
+            <svg class="matches__item__arrow__up" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 405.5 405.5" style="enable-background:new 0 0 405.5 405.5;" xml:space="preserve">
+                <g>
+                    <path style="fill:#222222;" class="st0" d="M331.3,341.3c5-0.1,9.9-2.2,13.4-5.7l55-55c3.6-3.6,5.7-8.7,5.7-13.8s-2.1-10.2-5.7-13.8L216.5,69.8
+            c-3.6-3.6-8.7-5.7-13.8-5.7s-10.2,2.1-13.8,5.7L5.7,253.1c-3.6,3.6-5.7,8.7-5.7,13.8s2.1,10.2,5.7,13.8l55,55
+            c3.6,3.6,8.7,5.7,13.7,5.7s10.1-2.1,13.7-5.7l114.6-114.6l114.6,114.6C321,339.3,326.1,341.4,331.3,341.3L331.3,341.3z" />
+                </g>
+            </svg>
+
+
+        </button>
         <ul class="footer__menu__row">
             <li class="footer__menu__list">
                 <a href="/" class="footer__menu__link">
@@ -33,9 +44,9 @@
                     		c0-0.276,0.224-0.5,0.5-0.5h16c0.276,0,0.5,0.224,0.5,0.5V255.5z" />
 
                         <foreignobject>
-                            <img src="/src/img/icons/matches.png" class="fallback_icon" alt="matches icon" />
+                            <img src="/dist/img/icons/matches.png" class="fallback_icon" alt="matches icon" />
                         </foreignobject>
-                        
+
                     </svg>
                     <span class="footer__menu__text">Matches</span>
                 </a>
@@ -73,12 +84,29 @@
                         <path d="M21.576,3.364H23c0.275,0,0.5-0.224,0.5-0.5c0-0.276-0.225-0.5-0.5-0.5h-1.424c-0.275,0-0.5,0.224-0.5,0.5
                     			C21.076,3.14,21.299,3.364,21.576,3.364z" />
 
-                          <foreignobject>
-                              <img src="/src/img/icons/tournaments.png" class="fallback_icon" alt="tournaments icon"/>
-                          </foreignobject>
+                        <foreignobject>
+                            <img src="/dist/img/icons/tournaments.png" class="fallback_icon" alt="tournaments icon" />
+                        </foreignobject>
 
                     </svg>
                     <span class="footer__menu__text">Tournaments</span>
+                </a>
+            </li>
+            <li class="footer__menu__list">
+                <a href="/favorites/" class="footer__menu__link footer__menu__link">
+                    <svg class="footer__menu__svg" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                        <g>
+                            <path d="M512,198.525l-176.891-25.704L256,12.53l-79.108,160.291L0,198.525l128,124.769L97.784,499.47L256,416.291l158.217,83.179
+                    l-30.219-176.176L512,198.525z M256,376.749l-111.731,58.74l21.338-124.415l-90.393-88.111l124.92-18.152L256,91.613
+                    l55.867,113.198l124.918,18.152l-90.395,88.111l21.34,124.415L256,376.749z" />
+                        </g>
+
+                        <foreignobject>
+                            <img src="/dist/img/icons/favorites.png" class="fallback_icon" alt="favorites icon" />
+                        </foreignobject>
+
+                    </svg>
+                    <span class="footer__menu__text">Favorites</span>
                 </a>
             </li>
             {{#if user }}
@@ -93,7 +121,7 @@
                     				c11.261,0,20.4-9.14,20.4-20.4v-163.2C612,376.354,602.86,367.235,591.6,367.235z" />
 
                             <foreignobject>
-                                <img src="/src/img/icons/logout.png" class="fallback_icon" alt="logout icon" />
+                                <img src="/dist/img/icons/logout.png" class="fallback_icon" alt="logout icon" />
                             </foreignobject>
 
                         </svg>
@@ -113,7 +141,7 @@
                     				v-382.5C612,72.503,577.747,38.25,535.5,38.25z" />
 
                             <foreignobject>
-                                <img src="/src/img/icons/login.png" class="fallback_icon" alt="login icon" />
+                                <img src="/dist/img/icons/login.png" class="fallback_icon" alt="login icon" />
                             </foreignobject>
 
                         </svg>

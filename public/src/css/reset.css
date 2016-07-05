@@ -10,6 +10,8 @@
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    min-width: 0;
+    /*min-height: 0;*/
 }
 
 html {
@@ -113,21 +115,27 @@ button {
     cursor: pointer;
 }
 
+/* Fallback for hiding spinner on numbers */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 /*--------------------------------------------------------------
 # MODIFIERS
 --------------------------------------------------------------*/
 .is-visible {
-    display: block;
+    display: block !important;
     opacity: 1;
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .inactive {
-    display: none;
+    display: none !important;
 }
 
 
@@ -148,9 +156,15 @@ body, button, input, select, textarea  {
     font-weight: 300;
 }
 
-.fonts-loaded .division h1,
+
+.fonts-loaded .match__item__team {
+    font-family: 'Lato', 'Helvetica neue', sans-serif;
+}
+
+.fonts-loaded .matches__division__title,
 .fonts-loaded .final-label {
-    font-family: "Roboto Slab", serif;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
 }
 
 p {
