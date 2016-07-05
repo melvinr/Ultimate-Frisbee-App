@@ -4,6 +4,258 @@
 - [Go to the individual README of contributor Fons Hettema](https://github.com/strexx/Ultimate-Frisbee-App/blob/master/README_fons.md)
 - [Go to the individual README of contributor Senny Kalidien](https://github.com/sennykalidien/Ultimate-Frisbee-App)
 
+##My Contributions
+###Splash Screen
+I created this animation purely with CSS and HTML. For the HTML, I created a div which contains three elements, a top bar, a bottom bar and an h1:
+
+```
+<div class="splash">
+	<div class="top-bar"></div>
+	<h1 class="splashh1">Ultimate Frisbee App</h1>
+	<div class="bottom-bar"></div>
+</div>
+```
+
+The top-bar wil animate from left to right, and the bottom bar the other way around. When these animations have finished, they shrink in size, creating a visual trick as if the red, middle bar grows. Finally a line will be drawn underneath the h1, this was done using the `:after` pseudo-class. The entire CSS including the keyframes:
+
+```
+#splash {
+    display: none;
+    position: relative;
+    height: 100%;
+    background: #f04b51;
+    top: 0;
+    z-index: 10;
+    padding: 0.4em;
+}
+#splash.active {
+    display: flex;
+    position: fixed;
+    width: 100%;
+}
+.splash__text {
+    margin: 0;
+    color: white;
+    margin: auto;
+    font-size: 2em;
+    position: relative;
+}
+.splash__text:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 10px;
+    opacity: 0;
+    background-color: #ffffff;
+    content: "";
+    animation: underlineTitle 0.5s 3s ease forwards;
+}
+.splash__top__bar {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 40%;
+    background: #FFFFFF;
+    animation: slideRight 1.5s ease-in-out, shrink 1.5s 1.5s ease-in-out forwards;
+}
+.splash__bottom__bar {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40%;
+    background: #ffffff;
+    animation: slideLeft 1.5s ease-in-out, shrink 1.5s 1.5s ease-in-out forwards;
+}
+@keyframes slideRight {
+    0% {
+        transform: translateX(-100%);
+    }
+    67% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+@keyframes slideLeft {
+    0% {
+        transform: translateX(100%);
+    }
+    67% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(0%)
+    }
+}
+@keyframes shrink {
+    0% {
+        height: 40%;
+    }
+    100% {
+        height: 0;
+    }
+}
+@keyframes underlineTitle {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        width: 100%;
+        opacity: 1;
+    }
+}
+```
+
+Finally I added 2 chunks of JavaScript code, one to show the splash screen:
+
+```
+function showSplash() {
+    splashScreen.classList.add('active');
+    setTimeout(function() {
+        splashScreen.classList.remove('active');
+    }, 4000)
+}
+```
+
+And the other one is a check that makes sure that the splash screen is only shown the first time the user opens the app. This was done using localStorage:
+
+```
+function splashVisited() {
+    var splashShown = localStorage.getItem("splashShown");
+    if (!splashShown) {
+        showSplash();
+        localStorage.setItem("splashShown", "true");
+    }
+}
+```
+
+Then to make sure the function is executed on the homepage, I added it to the matchesLive function in pages.js:
+
+```
+function matchesLive() {
+    UFA.scores.matchesInit();
+    UFA.scores.changeHomeScores();
+    UFA.ux.splashVisited();
+    UFA.ux.toggleClass();
+    UFA.ux.toggleDropdown();
+}
+```
+
+###Post data when JS is disabled
+Because we wanted to build the application progressive enhanced, it was vital that the application would be able to post match scores when JavaScript is not available or blocked. In order to do this, the scorepage had to be built using a form. In this form I added an action and a method, which basically tells the application what to do with the data it keeps:
+
+```
+<form class="match__item__form" action="/api/match/score" method="POST">
+```
+
+What this does, is that it will post the data to `/api/match/score`. This means that it will go to api.js and post it to the router which posts /match/score:
+
+```
+router.post('/match/score', function(req, res) {
+
+    var post = req.body;
+
+    if (post) {
+
+        var score1 = parseInt(post.score_team_1),
+            score2 = parseInt(post.score_team_2),
+            gameID = parseInt(post.gameID),
+            isFinal = false,
+            userID = null;
+
+        if (post.isFinal)
+            isFinal = true;
+
+        if (post.userID)
+            userID = post.userID;
+
+        var postData = JSON.stringify({
+            game_id: parseInt(gameID),
+            team_1_score: score1,
+            team_2_score: score2,
+            is_final: isFinal
+        });
+
+    } else {
+        console.log("Error when posting data");
+    }
+
+    var updateMatch = function(db, callback) {
+        var matchesCollection = db.collection('matches');
+        matchesCollection.updateOne({
+                id: gameID
+            }, {
+                $set: {
+                    team_1_score: score1,
+                    team_2_score: score2
+                }
+            },
+            function(err, results) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    callback();
+                }
+            });
+    };
+
+    updateMatch(db, function() {
+        // Log if match is updated in database
+        console.log("Match " + gameID + " updated.. new scores are " + score1 + " and " + score2);
+
+        //If scorekeeper is logged in and score is final score > post to API
+        if (userID && isFinal == true) {
+
+            // Post url and headers
+            var url = "https://api.leaguevine.com/v1/game_scores/",
+                headers = {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': 'bearer 40e50065ad'
+                };
+
+            // Post request
+            request.post({
+                url: url,
+                body: postData,
+                headers: headers
+            }, function(req, res, body, err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    updateMatchFromApi(gameID);
+                    console.log("Scorekeeper " + userID + " added new score");
+                    var destination = '/match/' + gameID + '/?message=Match is succesfully updated with final score';
+                    res.redirect(destination);
+                }
+            });
+
+        } else {
+            console.log("Regular user added new score");
+            var destination = '/match/' + gameID + '?message=Match is succesfully updated';
+            res.redirect(destination);
+        }
+    });
+});
+```
+
+This block of code stores the body of a request in a variable called post. Then it will check if post is present. If it is, this means that a request has been sent. What it will do is store certain values from the request's body in variables. Then it will check if the score has been checked as final, and if a user has been logged in. Then it will store these values in a variable object which converts the strings and numbers to JSON values.
+
+Next I created a function called updateMatch. From within this function I call the correct MongoDB collection and use `updateOne` to update one match. By using $set you tell mongo that only certain values need to be changed. Then I call the function and add functionality to post the score to the API if a user is logged in and checked isFinal.
+
+	
+
 ##Tasks per week
 
 ![Trello-board](readme/screenshots/trello.png)
