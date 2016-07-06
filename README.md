@@ -1,5 +1,5 @@
 # Ultimate Frisbee App - Melvin
-*This is the individual readme of Melvin Reijnoudt. In this document you can see my contributions to this project on a weekly basis. You can also see used techniques from each course of the minor Everything Web. You can also read a bit about my experience during this project. For an in-depth overview of the contributions by Fons and Senny, you can go to their personal readme's:*
+*This is the individual readme of Melvin Reijnoudt. In this document you can see my contributions to this project on a weekly basis. You can also see used techniques from each course of the minor Everything Web and read a bit about my experience during this project. For an in-depth overview of the contributions by Fons and Senny, you can go to their personal readme's:*
 
 - [Go to the individual README of contributor Fons Hettema](https://github.com/strexx/Ultimate-Frisbee-App/blob/master/README_fons.md)
 - [Go to the individual README of contributor Senny Kalidien](https://github.com/sennykalidien/Ultimate-Frisbee-App)
