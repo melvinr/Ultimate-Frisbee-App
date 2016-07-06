@@ -507,7 +507,7 @@ router.post('/match/score', function(req, res) {
 });
 ```
 
-This block of code stores the body of a request in a variable called post. Then it will check if post is present. If it is, this means that a request has been sent. What it will do is store certain values from the request's body in variables. Then it will check if the score has been checked as final, and if a user has been logged in. Then it will store these values in a variable object which converts the strings and numbers to JSON values.
+This block of code stores the body of a request in a variable called post. Then it will check if post is present. If it is, this means that a request has been sent. What it will do is store certain values from the request's body in variables. Then it will check if the score has been checked as final, and if a user has been logged in. It will store these values in a variable object which converts the strings and numbers to JSON values.
 
 Next I created a function called updateMatch. From within this function I call the correct MongoDB collection and use `updateOne` to update one match. By using $set you tell mongo that only certain values need to be changed. Then I call the function and add functionality to post the score to the API if a user is logged in and checked isFinal.
 
