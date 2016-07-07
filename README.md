@@ -29,12 +29,12 @@ The main readme of the repository can be found here:
 > Beforehand I would like to note that everything you need to know about the application can be found at the [main repository's README](https://github.com/strexx/Ultimate-Frisbee-App).
 
 ###UFA
-The Ultimate Frisbee App started as a school assignment for the Amsterdam University of Applied Sciences, at the study of Communication and Multimedia Design. Christian Schaffner, a frisbee fanatic and the client for this assignment, had the wish to have a mobile app that can keep scores for the Ultimate Frisbee tournaments.
+The Ultimate Frisbee app was a school assignment for the Amsterdam University of Applied Sciences, at the study Communication and Multimedia Design. The client Christian Schaffner wanted to have a mobile app that lets spectators keeps track of the scores for Ultimate Frisbee Tournaments.
 
 See the application live at: [https://meesterproef.directzichtbaar.nl](https://meesterproef.directzichtbaar.nl).
 
 ###Problem
-The public and frisbee fans at Ultimate Frisbee tournaments currently have a hard time keeping track of scores. There is no clear source of information that you can use on the go, or at least at a field. Aside from this, the tournament organizations themselves need a fast and secure solution for confirming and storing final scores.
+The public and frisbee fans at Ultimate Frisbee tournaments currently have a hard time keeping track of scores. There is no clear source of information that you can use on the go, or at least at a field. Aside from this, the tournament organizations themselves need a fast and secure solution for confirming and storing final scores. Currently there is no automated process, or something that lets the public contribute.
 
 The teams need to know when and where they are playing, and against whom.
 
@@ -51,22 +51,9 @@ The teams need to know when and where they are playing, and against whom.
 6. As a scorekeeper of a game I want to confirm the final score, so the score can be updated in the system (Leaguevine API).
 7. As a scorekeeper I want to see the matches that are relevant to me.
 
-#### Could haves
-1. As a user I want to be notified if a (favorite) team scores.
-2. As a user I want to view the scores on a public screen.
-3. As a scorekeeper I want to have a personal overview of all the teams that I need to keep the scores for during the tournament.
-4. As a team I want to fill in my sprit scores.
-5. As a client I want to receive the spirit scores into the Leaguevine API.
-
-
 ##Technical information
 ### Main functionalities
-The application's main functionalities are built using:
-
-- Node.js
-- MongoDB
-- Socket.io
-- Gulp
+The application's main functionalities are built using Node.js, MongoDB, Socket.io and Gulp. After a bit about the installation of this application, you will also find an overview of the application's structure.
 
 ###How to install
 A small tutorial on how to install the Node application on your own local machine.
@@ -102,13 +89,13 @@ npm start
 ```
 
 #### 6 - View the app in the browser
-The app will be listening to port 3010. Open the browser and go to either ``http://127.0.0.1:3010`` or ``http://localhost:3010``
+The app will be listening on port 3010. Go to your browser and navigate to: ``http://localhost:3010``
 
 
 ### How to develop
 - Changes to the server side files can be modified in the folders of the root.
 - Changes to the client side CSS and JS can be made in the public folder.
-- HTML can be changed in the views folder
+- HTML can be changed in the views folder.
 
 #### 1 - Use gulp watch to let Gulp watch for any changes
 ```
