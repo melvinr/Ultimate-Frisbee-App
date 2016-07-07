@@ -7,7 +7,190 @@
 The main readme of the repository can be found here:
 
  [Go to the repository's main README](https://github.com/strexx/Ultimate-Frisbee-App)
+ 
+## Table of content
+1. [About UFA](#about-ufa)
+  1. [UFA](#ufa)
+  2. [Problem](#problem)
+  3. [Design problem](#design-problem)
+  4. [Use cases](#use-cases)
+2. [Technical information](#technical-information)
+  1. [Main functionalities](#main-functionalities)
+  2. [The structure](#the-structure)
+  4. [How to install](#how-to-install)
+  5. [How to develop](#how-to-develop)
+3. [Individual](#individual)
+  1. [Tasks per week](#tasks-per-week)
+  2. [Used techniques from courses](#used-techniques-from-courses)
+  3. [Important contributions explained](#important-contributions-explained)
+  4. [Collaboration](#collaboration)
+ 
+##About UFA
+> Beforehand I would like to note that everything you need to know about the application can be found at the [main repository's README](https://github.com/strexx/Ultimate-Frisbee-App).
 
+###UFA
+The Ultimate Frisbee App started as a school assignment for the Amsterdam University of Applied Sciences, at the study of Communication and Multimedia Design. Christian Schaffner, a frisbee fanatic and the client for this assignment, had the wish to have a mobile app that can keep scores for the Ultimate Frisbee tournaments.
+
+See the application live at: [https://meesterproef.directzichtbaar.nl](https://meesterproef.directzichtbaar.nl).
+
+###Problem
+The public and frisbee fans at Ultimate Frisbee tournaments currently have a hard time keeping track of scores. There is no clear source of information that you can use on the go, or at least at a field. Aside from this, the tournament organizations themselves need a fast and secure solution for confirming and storing final scores.
+
+The teams need to know when and where they are playing, and against whom.
+
+###Design problem
+*How can a mobile web application allow the organization of the Ultimate Frisbee tournaments to receive the (final) scores of a finished match instantly and at the same time serve the public viewers and the teams with real-time (score) updates and other info about the matches during a tournament.*
+
+### Use cases
+#### Must haves
+1. As a user I want to have real-time score updates about a match or multiple matches (that I'm interested in).
+2. As a user I want to have an overview of the matches that are being played during the tournament and on which field.
+3. As a user I want to update the scores of my (favorite) team(s).
+4. As a user I want to follow my favorite teams.
+5. As a user I want to be able to visit the app, even if I have a bad internet connection.
+6. As a scorekeeper of a game I want to confirm the final score, so the score can be updated in the system (Leaguevine API).
+7. As a scorekeeper I want to see the matches that are relevant to me.
+
+#### Could haves
+1. As a user I want to be notified if a (favorite) team scores.
+2. As a user I want to view the scores on a public screen.
+3. As a scorekeeper I want to have a personal overview of all the teams that I need to keep the scores for during the tournament.
+4. As a team I want to fill in my sprit scores.
+5. As a client I want to receive the spirit scores into the Leaguevine API.
+
+
+##Technical information
+### Main functionalities
+The application's main functionalities are built using:
+
+- Node.js
+- MongoDB
+- Socket.io
+- Gulp
+
+###How to install
+A small tutorial on how to install the Node application on your own local machine.
+
+**Git repository**:
+[https://github.com/strexx/Ultimate-Frisbee-App.git](https://github.com/strexx/Ultimate-Frisbee-App.git)
+
+#### 1 - Clone the repository
+```
+git clone https://github.com/strexx/Ultimate-Frisbee-App.git
+```
+
+#### 2 - Navigate to the cloned repository
+
+```
+cd <path/to/file>
+```
+
+#### 3 - Install the node modules and packages
+```
+npm install
+```
+
+#### 4 - Start Gulp to create a dist folder
+
+```
+gulp
+```
+
+#### 5 - Start the application
+```
+npm start
+```
+
+#### 6 - View the app in the browser
+The app will be listening to port 3010. Open the browser and go to either ``http://127.0.0.1:3010`` or ``http://localhost:3010``
+
+
+### How to develop
+- Changes to the server side files can be modified in the folders of the root.
+- Changes to the client side CSS and JS can be made in the public folder.
+- HTML can be changed in the views folder
+
+#### 1 - Use gulp watch to let Gulp watch for any changes
+```
+gulp watch
+```
+
+#### 2 - Use nodemon to automatically refresh the page on any changes
+
+```
+nodemon app.js
+```
+
+Open your browser and go to ``http://localhost:3010``
+
+
+### The structure
+```
+├── connections                                 // Folder with database and socket.io connections setup
+|    ├── database.js                            // Database connection setup
+|    ├── socket.js                              // Web Sockets connection setup
+├── lib                                         // Library folder
+|    ├── mongodb.js                             // General database calls
+|    ├── socket-io.js                           // Socket listeners with functionality
+├── modules                                     // General modules setup
+|    ├── formatDigits.js                        // Time formatting
+|    ├── multiRequest.js                        // Multiple HTTP-requests handler
+|    ├── uniqueKeys.js                          // Get unique values from an array
+├── node_modules                                // Node modules
+├── public                                      // Client side folder
+|    ├── src                                    // Source folder
+|    |    |── css                               // Styling for the application
+|    |    |   ├── reset.css                     // Styling reset
+|    |    |   ├── styles.css                    // Styling main file
+|    |    ├── images                            // All images used in the application
+|    |    ├── js                                // All client-side JavaScript logic
+|    |    |   ├── appLauncher.js                // Main js file for launching app flow
+|    |    |   ├── fontFaceObserver.js           // Font Face Observer functionality
+|    |    |   ├── pages.js                      // Pages functionality
+|    |    |   ├── router.js                     // Router functionality
+|    |    |   ├── scores.js                     // Scores functionality
+|    |    |   ├── serverWorker.js               // Service Worker functionality
+|    |    |   ├── tools.js                      // Tools functionality
+|    |    |   ├── ux.js                         // Ux behaviour functionality
+|    |    ├── lib                               // Library folder
+|    |    |   ├── fontfaceobserver.min.js       // Font Face Observer library
+|    |    |   ├── modernizr.js                  // Modernizr library
+|    |    |   ├── socket.io.min.js              // Socket.io library
+|    ├── index.html                             // Basic HTML file for critical css
+|    ├── sw.js                                  // Main Service Worker file
+├── routes                                      // Routes folder
+|    ├── api.js                                 // Servers api file with requests and database storage
+|    ├── index.js                               // Page routing, rendering and data logic
+├── scripts                                     // Scripts folder
+|    ├── deploy                                 // Jenkins deploy bash script for server deployment
+├── sessions                                    // All sessions stored when user logging in
+├── views                                       // All views of the application, rendered with handlebars.
+|    ├── partials                               // Partials
+|    |    |── content                           // Partials content
+|    |    |   ├── content_matches.hbs
+|    |    |   ├── content_ranking.hbs
+|    |    ├── footer                            // Partials footer
+|    |    |   ├── footer_login.hbs
+|    |    |   ├── footer_matches.hbs
+|    |    |   ├── footer_tournaments.hbs
+|    |    ├── header                            // Partials header
+|    |    |   ├── header_login.hbs
+|    |    |   ├── header_match.hbs
+|    |    |   ├── header_matches.hbs
+|    |    |   ├── header_tournament.hbs
+|    |    |   ├── header_tournaments.hbs
+|    |    ├── loader.hbs
+|    |    ├── scripts.hbs
+|    |    ├── splash.hbs
+├── .gitignore                                  // Git ignore file
+├── app.js                                      // Application bootstrap
+├── gulpfile.js                                 // Gulp task managing configuration file
+├── package.js                                  // Node.js installation file with dependencies
+├── readme.md                                   // This readme file
+```
+
+
+#Individual
 ##Tasks per week
 
 ![Trello-board](readme/screenshots/trello.png)
@@ -259,7 +442,7 @@ Looked at the application using the "SEE" extension for chrome. This way I was a
 ####Browser and device compatibility
 The application was tested on a multitude of devices and browsers. Including an old version of Chrome for Android and the foreign UC Browser. The application looked fine and worked good on these browsers and most devices.
 
-##Contributions explained
+##Important contributions explained
 ###Splash Screen
 ![Splash Screen](readme/partial_screenshots/splash.gif)
 
@@ -739,6 +922,111 @@ function toggleDropdown() {
 ```
 What this JavaScript block does is that, for each matches__item__link, it will add a click eventlistener. When one of these links is clicked, it will activate a function in which the default event is prevented. It will then loop through morphContainers, it checks the link'ss next sibling, which is the dropdown. If the singleContainer from the forEach loop matches `morphContainer`, it will toggle the active class on that element. Thus activating the transition.
 
+###Setting favorites using cookies
+In order to store the favorites and get data from the database, we had to set cookies. I created a new file called `favStorage.js`, which you can find under `public/src/js`. 
+
+In here you will find the code that both sets and reads the cookies. The first part of the code is a function that does a regex search to get the value of a key. If the returned value equals `null`, a new empty array will be set. Otherwise it will parse this cookie as JSON.
+
+
+
+```
+function init() {
+
+    function readCookie(key) {
+        var nameEQ = key + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0, max = ca.length; i < max; i++) {
+            var c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+    
+    
+    var cookieID = readCookie("matchID");
+    if (cookieID === null) {
+        var arrayID = [];
+    } else {
+        var arrayID = JSON.parse(cookieID);
+    }
+```
+
+
+After this we set a new variable that is used for dynamic adding of favorites. We then use a forEach loop that listens to all favorites button and when clicked it will store the match ID in the cookie. 
+
+in the storeID function there is a check for duplicate ID's and a forEach loop that checks whether or not a certain ID is inside the cookie. If it is, it will add active to the favorite button, animating it and making it yellow. Clearly indicating that this match has been added to favorites.
+
+At the end, the function that actually creates the cookie is defined and in the end this function is executed. 
+
+```
+
+// Create a new variable newArrayID for dynamic adding favorites.
+var newArrayID = arrayID;
+
+// Find button
+var _favoriteButton = document.querySelectorAll('.favorite__btn');
+
+// favorite button eventlistener
+[].forEach.call(_favoriteButton, (button) => {
+    button.addEventListener('click', storeID, false);
+});
+
+
+function storeID(event) {
+    event.preventDefault()
+    var clickedID = this.getAttribute('value');
+    arrayID.push(clickedID);
+
+    // Remove class
+    this.classList.remove('pop--active');
+
+    /*  CHECK FOR DUPLICATED ID's - src: https://jsfiddle.net/BumbleB2na/XvgTb/1/ */
+    for (var h = 0; h < newArrayID.length; h++) {
+        var curItem = newArrayID[h],
+            foundCount = 0;
+        // search array for item
+        for (var i = 0; i < newArrayID.length; i++) {
+            if (newArrayID[i] == arrayID[h])
+                foundCount++;
+        }
+        if (foundCount > 1) {
+            // remove repeated item from new array
+            for (var j = 0; j < newArrayID.length; j++) {
+                if (newArrayID[j] == curItem) {
+                    newArrayID.splice(j, 1);
+                    j = j - 1;
+                }
+            }
+        }
+    };
+
+    // Check if ID is stored in array and make button active
+    [].forEach.call(newArrayID, (ID) => {
+        var _favoriteButtonID = document.querySelector('.favorite__btn[value="' + ID + '"]');
+        if (_favoriteButtonID) {
+            _favoriteButtonID.classList.add('pop--active');
+        }
+    });
+
+    function createCookie(key, value, exp) {
+        var date = new Date();
+        date.setTime(date.getTime() + (exp * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+        document.cookie = key + "=" + value + expires + "; path=/";
+    }
+
+    var storeArrayID = JSON.stringify(newArrayID);
+    createCookie('matchID', storeArrayID, 30);
+	};
+};
+
+return {
+	init: init
+};
+```
+
+
 
 ##Collaboration
 The collaboration between Senny, Fons and myself was an absolute joy. All three of us were prepared to work hard and spend a lot of hours to develop the application, which we did. They have more experience and knowledge of web development than I do, so they would help me with certain pieces of code on multiple occasions. This enabled me to learn a lot from them.  
@@ -749,60 +1037,3 @@ During the first two weeks of the project, we worked at school a lot. Separating
 
 Looking back at the project and our process, I wouldn't change a thing. The challenges we set for ourselves by using techniques none of us had used before, like node.js, socket.io and mongodb, turned out to be one of the best decisions we made. The process of learning new things whilst developing something for an actual client enabled me to learn a lot more.
 
-##The application
-Beforehand I would like to note that everything you need to know about the application can be found at the [main repository's README](https://github.com/strexx/Ultimate-Frisbee-App). For the sake of convenience, I will provide some information on how to install the application on this page as well. Note that this tutorial has been copy pasted from the main README.
-
-###How to install
-A small tutorial on how to install the Node application on your own local machine.
-
-**Git repository**:
-[https://github.com/strexx/Ultimate-Frisbee-App.git](https://github.com/strexx/Ultimate-Frisbee-App.git)
-
-#### 1 - Clone the repository
-```
-git clone https://github.com/strexx/Ultimate-Frisbee-App.git
-```
-
-#### 2 - Navigate to the cloned repository
-
-```
-cd <path/to/file>
-```
-
-#### 3 - Install the node modules and packages
-```
-npm install
-```
-
-#### 4 - Start Gulp to create a dist folder with concatenated and minified files
-
-```
-gulp
-```
-
-#### 5 - Start the application
-```
-npm start
-```
-
-#### 6 - View the app in the browser
-The app will be listening to port 3010. Open the browser and go to either ``http://127.0.0.1:3010`` or ``http://localhost:3010``
-
-
-### How to develop
-- Changes to the server side files can be modified in the folders of the root.
-- Changes to the client side CSS and JS can be made in the public folder.
-- HTML can be changed in the views folder
-
-#### 1 - Use gulp watch to let Gulp watch for any changes
-```
-gulp watch
-```
-
-#### 2 - Use nodemon to automatically refresh the page on any changes
-
-```
-nodemon app.js
-```
-
-Open your browser and go to ``http://localhost:3010``
